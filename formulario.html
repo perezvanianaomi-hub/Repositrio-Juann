@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Historia</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Formulario de Conciencia Histórica</h1>
+        <p>Contesta las siguientes preguntas sobre la historia de México.</p>
+    </header>
+
+    <main>
+
+        <form id="formulario" onsubmit="calificarFormulario(event)">
+
+            <h2>Datos del alumno</h2>
+
+            <label for="nombre">Nombre del alumno:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="grupo">Grupo:</label>
+            <input type="text" id="grupo" name="grupo" required>
+
+            <hr>
+
+            <h2>Preguntas de historia de México</h2>
+
+            <p>1. ¿En qué año comenzó la Independencia de México?</p>
+
+            <input type="radio" id="p1a" name="pregunta1" value="1810" required>
+            <label for="p1a">1810</label><br>
+
+            <input type="radio" id="p1b" name="pregunta1" value="1824">
+            <label for="p1b">1824</label><br>
+
+            <input type="radio" id="p1c" name="pregunta1" value="1848">
+            <label for="p1c">1848</label>
+
+            <p>2. ¿Quién inició el movimiento de Independencia?</p>
+
+            <input type="radio" id="p2a" name="pregunta2" value="Miguel Hidalgo" required>
+            <label for="p2a">Miguel Hidalgo</label><br>
+
+            <input type="radio" id="p2b" name="pregunta2" value="Benito Juárez">
+            <label for="p2b">Benito Juárez</label><br>
+
+            <input type="radio" id="p2c" name="pregunta2" value="Porfirio Díaz">
+            <label for="p2c">Porfirio Díaz</label>
+
+            <p>3. ¿Qué tipo de gobierno estableció la Constitución de 1824?</p>
+
+            <select name="pregunta3" required>
+                <option value="">Selecciona una respuesta</option>
+                <option value="Monarquia">Monarquía</option>
+                <option value="Republica federal">República federal</option>
+                <option value="Dictadura">Dictadura</option>
+            </select>
+
+            <p>4. ¿En qué año ocurrió la Batalla de Puebla?</p>
+
+            <input type="number" name="pregunta4" required>
+
+            <p>5. ¿Cuál es la diferencia entre federalismo y centralismo?</p>
+
+            <textarea
+                name="pregunta5"
+                rows="4"
+                placeholder="Escribe tu respuesta..."
+                required
+            ></textarea>
+
+            <p>6. ¿Por qué es importante conocer la historia de México?</p>
+
+            <textarea
+                name="opinion"
+                rows="4"
+                placeholder="Escribe tu opinión..."
+                required
+            ></textarea>
+
+            <hr>
+
+            <h2>Revolución Mexicana</h2>
+
+            <p>7. ¿En qué año comenzó la Revolución Mexicana?</p>
+
+            <input type="radio" id="p7a" name="pregunta7" value="1910" required>
+            <label for="p7a">1910</label><br>
+
+            <input type="radio" id="p7b" name="pregunta7" value="1821">
+            <label for="p7b">1821</label><br>
+
+            <input type="radio" id="p7c" name="pregunta7" value="1920">
+            <label for="p7c">1920</label>
+
+            <p>8. ¿Quién impulsó inicialmente el movimiento revolucionario?</p>
+
+            <input type="radio" id="p8a" name="pregunta8" value="Francisco I. Madero" required>
+            <label for="p8a">Francisco I. Madero</label><br>
+
+            <input type="radio" id="p8b" name="pregunta8" value="Miguel Hidalgo">
+            <label for="p8b">Miguel Hidalgo</label><br>
+
+            <input type="radio" id="p8c" name="pregunta8" value="Benito Juárez">
+            <label for="p8c">Benito Juárez</label>
+
+            <p>9. ¿En qué año se promulgó la Constitución surgida durante la Revolución Mexicana?</p>
+
+            <select name="pregunta9" required>
+                <option value="">Selecciona una respuesta</option>
+                <option value="1917">1917</option>
+                <option value="1910">1910</option>
+                <option value="1824">1824</option>
+            </select>
+
+            <p>10. Menciona una de las causas de la Revolución Mexicana:</p>
+
+            <textarea
+                name="pregunta10"
+                rows="4"
+                placeholder="Escribe tu respuesta..."
+                required
+            ></textarea>
+
+            <hr>
+
+            <div class="botones">
+
+                <input type="submit" value="Enviar respuestas">
+
+                <input type="reset" value="Borrar formulario">
+
+            </div>
+
+        </form>
+
+        <section id="resultado" class="resultado" hidden>
+            <h2>Resultado del formulario</h2>
+            <p id="mensajeResultado"></p>
+        </section>
+
+        <div class="regresar">
+            <a href="index.html">← Regresar a la página principal</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Conciencia Histórica | Historia de México</p>
+        <p>Gracias por participar</p>
+    </footer>
+
+    <script>
+
+        function calificarFormulario(event) {
+
+            event.preventDefault();
+
+            const datos = new FormData(event.target);
+
+            let correctas = 0;
+
+            if (datos.get("pregunta1") === "1810") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta2") === "Miguel Hidalgo") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta3") === "Republica federal") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta4") === "1862") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta7") === "1910") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta8") === "Francisco I. Madero") {
+                correctas++;
+            }
+
+            if (datos.get("pregunta9") === "1917") {
+                correctas++;
+            }
+
+            const resultado = document.getElementById("resultado");
+            const mensaje = document.getElementById("mensajeResultado");
+
+            mensaje.textContent =
+                "¡Gracias, " + datos.get("nombre") +
+                "! Obtuviste " + correctas +
+                " respuestas correctas de 7 preguntas calificadas. " +
+                "Las preguntas abiertas serán revisadas por tu profesor.";
+
+            resultado.hidden = false;
+
+            resultado.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+</html>
+
